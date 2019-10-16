@@ -58,28 +58,76 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(function(items){
+  return fullNames.push(`${items.first_name} ${items.last_name}`);
+ 
+});
+
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+firstNamesAllCaps = runners.map((item) =>{
+  return item.first_name.toUpperCase();
+})
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
-console.log(runnersLargeSizeShirt);
+const largeFilter = runners.filter(function(currentValue){
+  return currentValue.shirt_size === "L" ;
+  })
+    console.log(largeFilter);
+
+
+
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
-let ticketPriceTotal = 0;
-console.log(ticketPriceTotal);
+let ticketPriceTotal = 7043;
+const donatedFunds = runners.reduce(function(accumulator, currentValue){
+  return accumulator + currentValue.donation;
+}, 0);
+
+
+console.log("Total donation amount:", ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+//The Marketing team needs a list of everyone's email to send out a generic blurb 
+let runnerEmails = [];
+runners.forEach(function(items){
+  return runnerEmails.push(`${items.email}`);
+ 
+});
+console.log(runnerEmails);
 
-// Problem 2
 
-// Problem 3
+// Problem 2 The team demands a way to search for keys!
+// const runnerKeySearch = []
+
+// const runnerMap = new Map();
+// runnerMap.set('str1');
+
+// alert(runnerMap.get('company_name:'))
+// runnerMap.get('bar');  //
+// runnerMap.get('baz');  // Returns undefined.
+
+// runnerMap.get(company_name);
+
+// Problem 3 The Medium shirts were delivered with a typo! Better email 
+let runnersMediumSizeShirt = [];
+const mediumFilter = runners.filter(function(currentValue){
+  return currentValue.shirt_size === "M" ;
+  })
+    console.log(mediumFilter);
+//Problem 4 We want to know what our runners do for work!
+let companyNames = [];
+runners.forEach(function(items){
+  return companyNames.push(`${items.first_name} ${items.last_name} ${items.company_name}`);
+ 
+}); console.log(companyNames);
