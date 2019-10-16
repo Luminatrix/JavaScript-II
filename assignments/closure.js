@@ -4,9 +4,29 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
+function coolModule() {
+  const title = "The numbers are: ";
+  const values = [1, 2, 3];
+
+  function doTitle() {
+    console.log(title);
+  }
+
+  function doValues() {
+    console.log(values.join(" - "));
+  }
+
+  return {
+    doTitle: doTitle,
+    doValues: doValues
+  };
+}
+
+const foo = coolModule();
+foo.doTitle();
+foo.doValues();
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
-
 
 // ==== Challenge 2: Implement a "counter maker" function ====
 const counterMaker = () => {
